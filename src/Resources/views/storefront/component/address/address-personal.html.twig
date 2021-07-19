@@ -1,0 +1,17 @@
+{% sw_extends '@Storefront/storefront/component/address/address-personal.html.twig' %}
+
+{% set kvkNumber = '' %}
+{% if context.customer.customFields.melv_customer_kvk %}
+    {% set kvkNumber = context.customer.customFields.melv_customer_kvk %}
+{% endif %}
+
+{% block component_address_personal_vat_id %}
+    {{ parent() }}
+    {# This block is used on register page but empty by Shopware default, we don't want the field twice
+     (already included in register.html.twig) so only include this on customer overview page #}
+    {% if controllerName == 'AccountProfile' %}
+        {% sw_include '@Storefront/plugin/MelvCustomerKvkField/fields.html.twig' with {
+            'column': 'col-12'
+        } %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,9 @@
+{% sw_extends '@Storefront/storefront/component/account/register.html.twig' %}
+
+{% block component_account_register_company_fields %}
+    {{ parent() }}
+    {# Include below company fields #}
+    {% sw_include '@Storefront/plugin/MelvCustomerKvkField/fields.html.twig' with {
+        'column': 'col-6'
+    } %}
+{% endblock %}

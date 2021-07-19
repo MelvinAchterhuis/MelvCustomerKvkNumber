@@ -1,0 +1,33 @@
+{% block component_address_personal_fields_kvk_number %}
+    <div class="js-field-toggle-contact-type-company{% if customToggleTarget %}-{{ prefix }}{% endif %}">
+        <div class="form-row">
+            <div class="form-group {{ column }}">
+                {% block component_address_personal_fields_kvk_number_label %}
+                    <label class="form-label"
+                           for="{{ prefix }}personalKvkNumber">
+                        {{ "MelvCustomerKvkNumber.kvkNumberLabel"|trans|sw_sanitize }}{{ config('MelvCustomerKvkNumber.config.kvkNumberRequired') ? "general.required"|trans|sw_sanitize }}
+                    </label>
+                {% endblock %}
+
+                {% block component_address_personal_fields_kvk_number_input %}
+                    <input type="text"
+                           class="form-control{% if formViolations.getViolations('/kvkNumber') is not empty %} is-invalid{% endif %}"
+                           id="{{ prefix }}personalKvkNumber"
+                           placeholder="{{ "MelvCustomerKvkNumber.kvkNumberPlaceholder"|trans|striptags }}"
+                           name="{% if prefix %}{{ prefix }}[kvkNumber]{% else %}kvkNumber{% endif %}"
+                           value="{{ kvkNumber }}"
+                           pattern="[0-9]{8}"
+                           {{ config('MelvCustomerKvkNumber.config.kvkNumberRequired') ? 'required="true"' }}>
+                {% endblock %}
+
+                {% block component_address_personal_fields_kvk_number_input_error %}
+                    {% if formViolations.getViolations('/kvkNumber') is not empty %}
+                        {% sw_include '@Storefront/storefront/utilities/form-violation.html.twig' with {
+                            violationPath: '/kvkNumber'
+                        } %}
+                    {% endif %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

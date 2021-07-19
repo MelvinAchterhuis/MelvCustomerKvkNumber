@@ -1,0 +1,33 @@
+{
+    "name": "melvinachterhuis/customer-kvk-number-shopware6-plugin",
+    "description": "Show KvK number in register and account page",
+    "version": "1.0.0",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Melvin Achterhuis"
+        }
+    ],
+    "require": {
+        "shopware/core": "6.4.*"
+    },
+    "type": "shopware-platform-plugin",
+    "autoload": {
+        "psr-4": {
+            "Melv\\CustomerKvkNumber\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "Melv\\CustomerKvkNumber\\MelvCustomerKvkNumber",
+        "label": {
+            "de-DE": "KvK number",
+            "en-GB": "KvK number",
+            "nl-NL": "KvK nummer"
+        },
+        "description": {
+            "de-DE": "Show KvK number in register and account page",
+            "en-GB": "Show KvK number in register and account page",
+            "nl-NL": "Toon KvK nummer bij registreren en op account pagina"
+        }
+    }
+}

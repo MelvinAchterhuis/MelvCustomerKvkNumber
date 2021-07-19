@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/component/account/customer-overview-personal-company.html.twig' %}
+
+{% block component_customer_overview_personal_vat_id %}
+    {{ parent() }}
+    {# Show KvK in customer overview #}
+    {% if context.customer.customFields.melv_customer_kvk %}
+        {% set kvkNumber = context.customer.customFields.melv_customer_kvk %}
+        <br/>
+        {{ "MelvCustomerKvkNumber.kvkNumberLabel"|trans|sw_sanitize }}: {{ kvkNumber }}
+    {% endif %}
+{% endblock %}
